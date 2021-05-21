@@ -27,7 +27,7 @@ spec:
         args:
           - '--storage.tsdb.retention=6h'
           - '--storage.tsdb.path=/prometheus'
-          - '--config.file=/etc/prometheus/config/prometheus.yml'
+          - '--config.file=/etc/prometheus/prometheus.yml'
         command:
         - /bin/prometheus
         resources:
@@ -39,19 +39,19 @@ spec:
           protocol: TCP
         volumeMounts:
           - name: prometheus-config-volume
-            mountPath: /etc/prometheus/config/prometheus.yml
-            subPath: prometheus.yml
+            mountPath: /etc/prometheus
+          - name: prometheus-config-volume-rules
+            mountPath: /etc/prometheus-rules/
           - name: prometheus-data
             mountPath: /prometheus
       restartPolicy: Always
 
       volumes:
-      - emptyDir: {}
-        name: prometheus-data
-      - configMap:
-          items:
-            - key: prometheus.yml
-              path: prometheus.yml
+      - name: prometheus-data
+        emptyDir: {}
+      - name: prometheus-config-volume
+        configMap:
           name: prometheus-config
-          defaultMode: 420
-        name: prometheus-config-volume
+      - name: prometheus-config-volume-rules
+        configMap:
+          name: prometheus-config-alert-rules
