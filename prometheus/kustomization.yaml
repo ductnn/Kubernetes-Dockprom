@@ -1,6 +1,7 @@
 resources:
-    - namespace.yaml
-    - cluster-role.yaml
-    - configmap.yaml
-    - deployment.yaml
-    - service.yaml
+  - namespace.yaml
+  - cluster-role.yaml
+  - configmap.yaml
+  - alert-rules-configmap.yaml
+  - deployment.yaml
+  - service.yaml
