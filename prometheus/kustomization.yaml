@@ -1,5 +1,5 @@
 resources:
-  - namespace.yaml
+  # - namespace.yaml
   - cluster-role.yaml
   - configmap.yaml
   - alert-rules-configmap.yaml
