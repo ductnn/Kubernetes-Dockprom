@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prometheus
+  namespace: $COMPOSE_PROJECT_NAME
 spec:
-  replicas: 1
+  replicas: $NUMBER_PODS
   strategy:
     rollingUpdate:
       maxSurge: 1
