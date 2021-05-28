@@ -2,7 +2,7 @@ set -a
 source .env
 
 # Create namespace
-envsubst < namespace.yaml | kubectl create -f -
+envsubst < ./common/namespace.yaml | kubectl create -f -
 # kubectl create -f namespace.yaml
 
 # Prometheus
