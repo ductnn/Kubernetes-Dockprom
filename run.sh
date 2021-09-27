@@ -1,3 +1,6 @@
+# Set .env
+cp .env.example .env
+
 set -a
 source .env
 
